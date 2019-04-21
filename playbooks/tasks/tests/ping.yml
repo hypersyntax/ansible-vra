@@ -2,3 +2,4 @@
 - name: Test reachability
   net_ping:
     dest: "{{ ip_address }}"
+  ignore_errors: true
