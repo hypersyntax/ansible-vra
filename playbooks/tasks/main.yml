@@ -18,6 +18,7 @@
    - include_tasks: request/submit.yml
    - include_tasks: request/status.yml
    - include_tasks: detail/get.yml
+   - include_tasks: tests/ping.yml
    - include_tasks: actions/get.yml
    - include_tasks: destroy/get_template.yml
    - include_tasks: destroy/destroy_vm.yml
