@@ -12,7 +12,7 @@
     body: "{{ destroy.json }}"
     body_format: json
     timeout: 120
-    status_code: 200
+    status_code: 201
   register: destroy_vm
 
 - debug:
