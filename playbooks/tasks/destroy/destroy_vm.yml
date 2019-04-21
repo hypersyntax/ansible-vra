@@ -1,0 +1,17 @@
+---
+- name: Destroy VM
+  uri:
+    url: "https://{{ vra_host }}/catalog-service/api/consumer/resources/{{ resource_id }}/actions/{{ destroy_id }}/requests"
+    method: POST
+    follow_redirects: all
+    headers:
+      Accept: "application/json"
+      Authorization: "{{ authorization }}"
+    validate_certs: no
+    body: "{{ destroy.json }}"
+    timeout: 120
+    status_code: 200
+  register: destroy_vm
+
+- debug:
+    var: destroy_vm.json

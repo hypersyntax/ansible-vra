@@ -9,9 +9,10 @@
     vra_tenant: prod
     debug: true
     blueprintid: abf93246-a9fc-42e9-ae3c-ad9951ab9626
+    destroy_id: 9a2127b4-3a9a-4558-92e3-e9d7f62c2401
 
   tasks:
-   - debug: 
+   - debug:
        msg: hello world
    - include_tasks: token/get.yml
    - include_tasks: blueprint/get.yml
@@ -19,3 +20,6 @@
    - include_tasks: request/submit.yml
    - include_tasks: request/status.yml
    - include_tasks: detail/get.yml
+   - include_tasks: actions/get.yml
+   - include_tasks: destroy/get_template.yml
+   - include_tasks: destroy/destroy_vm.yml

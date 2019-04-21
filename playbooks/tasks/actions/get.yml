@@ -1,0 +1,16 @@
+---
+- name: Get Actions
+  uri:
+    url: "https://{{ vra_host }}/catalog-service/api/consumer/resources/{{ resource_id }}/actions"
+    method: GET
+    follow_redirects: all
+    headers:
+      Accept: "application/json"
+      Authorization: "{{ authorization }}"
+    validate_certs: no
+    timeout: 120
+    status_code: 200
+  register: actions
+
+- debug:
+    var: actions.json
