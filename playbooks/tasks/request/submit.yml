@@ -2,7 +2,7 @@
 
 - name: Send vRA Request
   uri:
-    url: "https://{{ vra_host }}/catalog-service/api/consumer/entitledCatalogItems/{{ blueprintid }}/requests"
+    url: "https://{{ vra_host }}/catalog-service/api/consumer/entitledCatalogItems/{{ blueprint_id }}/requests"
     method: POST
     follow_redirects: all
     headers:
