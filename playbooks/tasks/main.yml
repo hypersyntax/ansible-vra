@@ -18,3 +18,4 @@
    - include_tasks: template/get.yml
    - include_tasks: request/submit.yml
    - include_tasks: request/status.yml
+   - include_tasks: detail/get.yml
