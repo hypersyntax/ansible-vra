@@ -1,7 +1,7 @@
 ---
 - name: Get destroy template
   uri:
-    url: "https://{{ vra_host }}/catalog-service/api/consumer/resources/{{ deployment_id }}/actions/{{ destroy_id }}/requests/template"
+    url: "https://{{ vra_host }}/catalog-service/api/consumer/resources/{{ resource_id }}/actions/{{ destroy_id }}/requests/template"
     method: GET
     follow_redirects: all
     headers:
