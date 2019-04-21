@@ -1,0 +1,28 @@
+---
+
+- name: Get request status
+  uri:
+    url: "{{ request_location }}"
+    method: GET
+    follow_redirects: all
+    headers:
+      Accept: "application/json"
+      Authorization: "{{ authorization }}"
+    validate_certs: no
+    timeout: 120
+    status_code: 200
+  register: status_result
+  until: status_result.json.stateName == "Successful" or status_result.json.stateName == "Failed"
+  retries: 96
+  delay: 120
+
+- debug:
+    var: status_result
+
+- debug:
+    msg: "The vRA request state is {{status_result.json.stateName}}"
+
+- set_fact:
+    req_number: "{{ status_result.json.requestNumber }}"
+    vra_request_id: "{{ status_result.json.id }}"
+    vm_detail_url: "https://{{ vra_host }}/catalog-service/api/consumer/requests/{{ status_result.json.id }}/resources"

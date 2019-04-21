@@ -1,0 +1,28 @@
+---
+- name: Get vRA Token
+  uri:
+    url: "https://{{ vra_host }}/identity/api/tokens"
+    method: POST
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+    validate_certs: no
+    follow_redirects: all
+    body:
+      username: "{{ vra_username }}"
+      password: "{{ vra_password }}"
+      tenant: "{{ vra_tenant }}"
+    body_format: json
+  register: vra_token
+
+- debug:
+    var: vra_token
+  when: debug
+
+- name: Create Authorization Bearer
+  set_fact:
+    authorization: "Bearer {{ vra_token.json.id }}"
+
+- debug:
+    msg: "{{ authorization }}"
+  when: debug

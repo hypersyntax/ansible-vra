@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars:
+    vra_host: vra.vlab.local
+    vra_username: ehc_sysadmin
+    vra_password: Password123!
+    vra_tenant: prod
+    debug: true
+    blueprintid: abf93246-a9fc-42e9-ae3c-ad9951ab9626
+
+  tasks:
+   - debug: 
+       msg: hello world
+   - include_tasks: token/get.yml
+   - include_tasks: blueprint/get.yml
+   - include_tasks: template/get.yml
+   - include_tasks: request/submit.yml
+   - include_tasks: request/status.yml

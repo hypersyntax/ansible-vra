@@ -1,0 +1,16 @@
+---
+- name: Get Templates
+  uri:
+    url: "https://{{ vra_host }}/catalog-service/api/consumer/entitledCatalogItems/{{ blueprintid }}/requests/template"
+    method: GET
+    follow_redirects: all
+    headers:
+      Accept: "application/json"
+      Authorization: "{{ authorization }}"
+    validate_certs: no
+    timeout: 120
+    status_code: 200
+  register: blueprints
+
+- debug:
+    var: blueprints.json

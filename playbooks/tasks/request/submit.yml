@@ -1,0 +1,26 @@
+---
+
+- name: Send vRA Request
+  uri:
+    url: "https://{{ vra_host }}/catalog-service/api/consumer/entitledCatalogItems/{{ blueprintid }}/requests"
+    method: POST
+    follow_redirects: all
+    headers:
+      Accept: "application/json"
+      Authorization: "{{ authorization }}"
+    validate_certs: no
+    body: "{{ blueprints.json }}"
+    return_content: yes
+    body_format: json
+    timeout: 120
+    status_code: 201
+  register: request_result
+
+- debug:
+    msg: request_result
+
+- set_fact:
+    request_location: "{{ request_result.location }}"
+
+- debug:
+    msg: "{{ request_location }}"

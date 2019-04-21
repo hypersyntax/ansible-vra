@@ -1,0 +1,33 @@
+---
+
+- name: Get VM Details
+  uri:
+    url: "{{ vm_detail_url }}"
+    method: GET
+    follow_redirects: all
+    headers:
+      Accept: "application/json"
+      Authorization: "{{ authorization }}"
+    validate_certs: no
+    timeout: 120
+    status_code: 200
+  register: vmdetail_result
+  when: status_result.json.stateName == "Successful"
+
+- debug:
+    var: vmdetail_result
+
+- debug:
+    msg: "{{ vmdetail_result.json|json_query(\"content[?name=='Virtual Machine-51040960'].description\") }}"
+
+- debug:
+    msg: "{{ vmdetail_result.json|json_query(\"content[*].name\") }}"
+
+- debug:
+    msg: "{{ vmdetail_result.json|json_query(\"content[?resourceTypeRef.id=='Infrastructure.Virtual'].resourceData[].entries[?key=='ip_address'].value[] | [0].value\") }}"
+
+- set_fact:
+    resource_id: "{{ vmdetail_result.json|json_query(\"content[?resourceTypeRef.id=='Infrastructure.Virtual'] | [0].id\") }}"
+    deployment_id: "{{ vmdetail_result.json|json_query(\"content[?resourceTypeRef.id=='composition.resource.type.deployment'] | [0].id\") }}"
+    vm_name: "{{ vmdetail_result.json|json_query(\"content[?resourceTypeRef.id=='Infrastructure.Virtual'] | [0].name\") }}"
+    ip_address: "{{ vmdetail_result.json|json_query(\"content[?resourceTypeRef.id=='Infrastructure.Virtual'].resourceData[].entries[?key=='ip_address'].value[] | [0].value\") }}"
