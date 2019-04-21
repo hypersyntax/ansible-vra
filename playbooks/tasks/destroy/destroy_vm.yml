@@ -16,4 +16,4 @@
   register: destroy_vm
 
 - debug:
-    var: destroy_vm.json
+    var: destroy_vm
