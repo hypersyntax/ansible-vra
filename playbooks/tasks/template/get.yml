@@ -1,7 +1,7 @@
 ---
 - name: Get Templates
   uri:
-    url: "https://{{ vra_host }}/catalog-service/api/consumer/entitledCatalogItems/{{ blueprintid }}/requests/template"
+    url: "https://{{ vra_host }}/catalog-service/api/consumer/entitledCatalogItems/{{ blueprint_id }}/requests/template"
     method: GET
     follow_redirects: all
     headers:
