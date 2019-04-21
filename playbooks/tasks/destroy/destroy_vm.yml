@@ -17,3 +17,6 @@
 
 - debug:
     var: destroy_vm
+
+- set_fact:
+    destroy_location: "{{ destroy_vm.location }}"
