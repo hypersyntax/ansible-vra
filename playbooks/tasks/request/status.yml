@@ -15,6 +15,7 @@
   until: status_result.json.stateName == "Successful" or status_result.json.stateName == "Failed"
   retries: 96
   delay: 30
+  changed_when: status_code == 200
 
 - debug:
     var: status_result
