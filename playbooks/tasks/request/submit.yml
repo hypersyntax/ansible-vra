@@ -17,10 +17,10 @@
   register: request_result
 
 - debug:
-    msg: request_result
+    var: request_result
 
 - set_fact:
     request_location: "{{ request_result.location }}"
 
 - debug:
-    msg: "{{ request_location }}"
+    var: request_location

@@ -10,6 +10,7 @@
       Authorization: "{{ authorization }}"
     validate_certs: no
     body: "{{ destroy.json }}"
+    body_format: json
     timeout: 120
     status_code: 200
   register: destroy_vm
