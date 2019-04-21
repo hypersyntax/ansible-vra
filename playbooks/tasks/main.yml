@@ -12,8 +12,6 @@
     destroy_id: 9a2127b4-3a9a-4558-92e3-e9d7f62c2401
 
   tasks:
-   - debug:
-       msg: hello world
    - include_tasks: token/get.yml
    - include_tasks: blueprint/get.yml
    - include_tasks: template/get.yml

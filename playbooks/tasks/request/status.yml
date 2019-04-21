@@ -14,7 +14,7 @@
   register: status_result
   until: status_result.json.stateName == "Successful" or status_result.json.stateName == "Failed"
   retries: 96
-  delay: 120
+  delay: 30
 
 - debug:
     var: status_result
