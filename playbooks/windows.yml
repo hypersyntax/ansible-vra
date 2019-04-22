@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars:
+    vra_host: vra.vlab.local
+    vra_username: ehc_sysadmin
+    vra_password: Password123!
+    vra_tenant: prod
+    debug: true
+    blueprint_name: Windows
+
+  tasks:
+   - include_tasks: tasks/token/get.yml
+   - include_tasks: tasks/blueprint/get.yml
+   - include_tasks: tasks/blueprint/filter.yml
+   - include_tasks: tasks/template/get.yml
+   - include_tasks: tasks/request/submit.yml
+   - include_tasks: tasks/request/status.yml
+   - include_tasks: tasks/detail/get.yml
+   - include_tasks: tasks/tests/ping.yml
+   - include_tasks: tasks/actions/get.yml
+   - include_tasks: tasks/actions/filter.yml
+   - include_tasks: tasks/destroy/get_template.yml
+   - include_tasks: tasks/destroy/destroy_vm.yml
+   - include_tasks: tasks/destroy/status.yml
