@@ -11,23 +11,42 @@
     blueprint_name: Linux
 
   tasks:
-   - include_tasks: tasks/token/get.yml
+    // Get Token
+    - include_tasks: tasks/token/get.yml
 
-   - include_tasks: tasks/blueprint/get.yml
-   - include_tasks: tasks/blueprint/filter.yml
-   - include_tasks: tasks/template/get.yml
-   - include_tasks: tasks/request/submit.yml
-   - include_tasks: tasks/request/status.yml
+    // Get Blueprint
+    - include_tasks: tasks/blueprint/get.yml
+    - include_tasks: tasks/blueprint/filter.yml
+    - include_tasks: tasks/template/get.yml
 
-   - include_tasks: tasks/detail/get.yml
-   - include_tasks: tasks/tests/ping.yml
-   - include_tasks: tasks/actions/get.yml
-   - include_tasks: tasks/actions/filter.yml
+    // Submit Request
+    - include_tasks: tasks/request/submit.yml
+    - include_tasks: tasks/request/status.yml
 
-   - include_tasks: tasks/destroy/get_template.yml my_resource=resource_id
-   - include_tasks: tasks/destroy/destroy_vm.yml my_resource=resource_id
-   - include_tasks: tasks/destroy/status.yml
+    // Get Details
+    - include_tasks: tasks/detail/get.yml
 
-   - include_tasks: tasks/destroy/get_template.yml my_resource=deployment_id
-   - include_tasks: tasks/destroy/destroy_vm.yml my_resource=deployment_id
-   - include_tasks: tasks/destroy/status.yml
+    // Run Tests
+    - include_tasks: tasks/tests/ping.yml
+
+    // Get Actions
+    - include_tasks: tasks/actions/get.yml
+    - include_tasks: tasks/actions/filter.yml
+
+    // Remove VM
+    - include_tasks: tasks/destroy/get_template.yml
+      vars:
+        my_resource: "{{resource_id}}"
+    - include_tasks: tasks/destroy/destroy_vm.yml
+      vars:
+        my_resource: "{{resource_id}}"
+    - include_tasks: tasks/destroy/status.yml
+
+    // Remove Deployment
+    - include_tasks: tasks/destroy/get_template.yml
+      vars:
+        my_resource: "{{deployment_id}}"
+    - include_tasks: tasks/destroy/destroy_vm.yml
+      vars:
+        my_resource: "{{deployment_id}}"
+    - include_tasks: tasks/destroy/status.yml
