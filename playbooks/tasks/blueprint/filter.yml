@@ -1,0 +1,9 @@
+---
+- name: Find a Blueprint
+  set_fact:
+    blueprint_id: blueprints.json.content.item.iconId
+  with_items: blueprints.json.content
+  where: blueprints.json.content.item.name == blueprint_name
+
+- debug:
+    var: blueprint_id
