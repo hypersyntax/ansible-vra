@@ -1,7 +1,7 @@
 ---
 - name: Destroy VM
   uri:
-    url: "https://{{ vra_host }}/catalog-service/api/consumer/resources/{{ resource_id }}/actions/{{ destroy_id }}/requests"
+    url: "https://{{ vra_host }}/catalog-service/api/consumer/resources/{{ my_resource }}/actions/{{ destroy_id }}/requests"
     method: POST
     follow_redirects: all
     headers:
