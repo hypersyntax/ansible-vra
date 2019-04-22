@@ -1,0 +1,8 @@
+---
+- hosts: vms
+
+  tasks:
+  - name: Install a Windows feature with the WindowsFeature resource
+    win_dsc:
+      resource_name: WindowsFeature
+      Name: telnet-client

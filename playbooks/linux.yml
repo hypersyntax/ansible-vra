@@ -7,7 +7,7 @@
     vra_username: ehc_sysadmin
     vra_password: Password123!
     vra_tenant: prod
-    debug: true
+    debug: false
     blueprint_name: Linux
 
   tasks:

@@ -1,0 +1,12 @@
+---
+- hosts: vms
+
+  tasks:
+  - name: Install Apache Web Server
+    yum:
+      name: httpd
+      state: present
+  - name: Start service httpd, if not started
+    service:
+      name: httpd
+      state: started
