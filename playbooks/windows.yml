@@ -22,6 +22,9 @@
   # Submit Request
   - include_tasks: tasks/request/submit.yml
   - include_tasks: tasks/request/status.yml
+    vars:
+      delay: 30
+      retries: 35
 
   # Get Details
   - include_tasks: tasks/detail/get.yml
