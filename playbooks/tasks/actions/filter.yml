@@ -1,0 +1,9 @@
+---
+- name: Find destroy action
+  set_fact:
+    destroy_id: "{{ item.id }}"
+  with_items: "{{ actions.json.content }}"
+  when: item.name == "Destroy"
+
+- debug:
+    var: destroy_id
