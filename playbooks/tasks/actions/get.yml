@@ -1,7 +1,7 @@
 ---
 - name: Get Actions
   uri:
-    url: "https://{{ vra_host }}/catalog-service/api/consumer/resources/{{ resource_id }}/actions"
+    url: "https://{{ vra_host }}/catalog-service/api/consumer/resources/{{ my_resource }}/actions"
     method: GET
     follow_redirects: all
     headers:
