@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars:
+    vra_host: vra.vlab.local
+    vra_username: ehc_sysadmin
+    vra_password: Password123!
+    vra_tenant: prod
+    debug: false
+    blueprint_name: Linux
+
+  tasks:
+  # Get Token
+  - include_tasks: tasks/token/get.yml
+
+  # Get Blueprint
+  - include_tasks: tasks/blueprint/get.yml
+  - include_tasks: tasks/blueprint/filter.yml
+  - include_tasks: tasks/template/get.yml
+
+  # Submit Request
+  - include_tasks: tasks/request/submit.yml
+  - include_tasks: tasks/request/status.yml
+    vars:
+      delay: 30
+      retries: 20

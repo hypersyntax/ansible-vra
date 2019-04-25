@@ -7,8 +7,8 @@
     vra_username: ehc_sysadmin
     vra_password: Password123!
     vra_tenant: prod
-    debug: true
-    blueprint_name: Windows
+    debug: false
+    blueprint_name: Linux
 
   tasks:
   # Get Token
@@ -24,7 +24,7 @@
   - include_tasks: tasks/request/status.yml
     vars:
       delay: 30
-      retries: 35
+      retries: 20
 
   # Get Details
   - include_tasks: tasks/detail/get.yml
@@ -33,9 +33,6 @@
   - include_tasks: tasks/tests/ping.yml
 
   ########################################################
-
-  # Pause
-  - pause:
 
   # Get Actions
   - include_tasks: tasks/actions/get.yml

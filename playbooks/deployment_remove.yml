@@ -14,29 +14,6 @@
   # Get Token
   - include_tasks: tasks/token/get.yml
 
-  # Get Blueprint
-  - include_tasks: tasks/blueprint/get.yml
-  - include_tasks: tasks/blueprint/filter.yml
-  - include_tasks: tasks/template/get.yml
-
-  # Submit Request
-  - include_tasks: tasks/request/submit.yml
-  - include_tasks: tasks/request/status.yml
-    vars:
-      delay: 30
-      retries: 20
-
-  # Get Details
-  - include_tasks: tasks/detail/get.yml
-
-  # Run Tests
-  - include_tasks: tasks/tests/ping.yml
-
-  ########################################################
-
-  # Pause
-  - pause:
-
   # Get Actions
   - include_tasks: tasks/actions/get.yml
     vars:
