@@ -1,4 +1,9 @@
-test1:
+linuxBlueprint:
   stage: test
   script:
     - ansible-playbook playbooks/blueprint_pipeline.yml --extra-vars="blueprint_name=Linux retries=35"
+
+windowsBlueprint:
+  stage: test
+  script:
+    - ansible-playbook playbooks/blueprint_pipeline.yml --extra-vars="blueprint_name=Windows retries=35"
