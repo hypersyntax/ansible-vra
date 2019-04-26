@@ -15,6 +15,18 @@ Ping:
     - export IP_ADDRESS=`cat /tmp/ip_address`
     - ansible-playbook playbooks/test_ping.yml --extra-vars="ip_address=$IP_ADDRESS"
 
+Install Apache Web Server:
+  stage: test
+  script:
+    - export IP_ADDRESS=`cat /tmp/ip_address`
+    - ansible-playbook -i inventory.yaml -i "$IP_ADDRESS," linux-test.yml
+
+Web Server Accessible:
+  stage: test
+  script:
+    - export IP_ADDRESS=`cat /tmp/ip_address`
+    - curl -sf $IP_ADDRESS --connect-timeout 3 >/dev/null
+
 Decomission:
   stage: clean
   script:

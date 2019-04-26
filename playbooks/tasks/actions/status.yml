@@ -2,7 +2,7 @@
 
 - name: Get action status
   uri:
-    url: "{{ action_request.location }}"
+    url: "{{ action_location }}"
     method: GET
     follow_redirects: all
     headers:

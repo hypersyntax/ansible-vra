@@ -9,7 +9,7 @@
       Content-Type: "application/json"
       Authorization: "{{ authorization }}"
     validate_certs: no
-    body: "{{ destroy.json }}"
+    body: "{{ action.json }}"
     body_format: json
     timeout: 120
     status_code: 201
@@ -19,4 +19,4 @@
     var: action_request
 
 - set_fact:
-    destroy_location: "{{ action_request.location }}"
+    action_location: "{{ action_request.location }}"
