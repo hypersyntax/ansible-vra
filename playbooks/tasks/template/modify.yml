@@ -22,8 +22,8 @@
 
 - set_fact:
     blueprint_template: "{{ my_template.json.json }}"
-  when: my_template.changed is True
+  when: my_template.changed
 
 - set_fact:
     blueprint_template: "{{ my_template }}"
-  when: my_template.changed is False
+  when: my_template.changed == False
