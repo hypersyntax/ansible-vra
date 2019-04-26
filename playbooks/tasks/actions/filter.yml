@@ -1,9 +1,9 @@
 ---
-- name: Find destroy action
+- name: Find action
   set_fact:
-    destroy_id: "{{ item.id }}"
+    action_id: "{{ item.id }}"
   with_items: "{{ actions.json.content }}"
-  when: item.name == "Destroy"
+  when: item.name == "{{ my_action }}"
 
 - debug:
-    var: destroy_id
+    var: action_id

@@ -9,6 +9,7 @@
     vra_tenant: prod
     debug: false
     blueprint_name: Linux
+    action_name: Destroy
 
   tasks:
   # Get Token
@@ -17,13 +18,22 @@
   # Get Actions
   - include_tasks: tasks/actions/get.yml
     vars:
-      my_resource: "{{deployment_id}}"
+      my_resource: "{{ deployment_id }}"
+
   - include_tasks: tasks/actions/filter.yml
+    vars:
+      my_action: "{{ action_name }}"
+
   # Remove Deployment
-  - include_tasks: tasks/destroy/get_template.yml
+  - include_tasks: tasks/actions/get_template.yml
     vars:
-      my_resource: "{{deployment_id}}"
-  - include_tasks: tasks/destroy/destroy_vm.yml
+      my_resource: "{{ deployment_id }}"
+
+  - include_tasks: tasks/actions/request.yml
     vars:
-      my_resource: "{{deployment_id}}"
-  - include_tasks: tasks/destroy/status.yml
+      my_resource: "{{ deployment_id }}"
+
+  - include_tasks: tasks/actions/status.yml
+
+  # Clean Details
+  - include_tasks: tasks/detail/clean.yml

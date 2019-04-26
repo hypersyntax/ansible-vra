@@ -37,24 +37,10 @@
   # Get Actions
   - include_tasks: tasks/actions/get.yml
     vars:
-      my_resource: "{{resource_id}}"
-  - include_tasks: tasks/actions/filter.yml
-  # Remove VM
-  - include_tasks: tasks/destroy/get_template.yml
-    vars:
-      my_resource: "{{resource_id}}"
-  - include_tasks: tasks/destroy/destroy_vm.yml
-    vars:
-      my_resource: "{{resource_id}}"
-  - include_tasks: tasks/destroy/status.yml
-
-  ########################################################
-
-  # Get Actions
-  - include_tasks: tasks/actions/get.yml
-    vars:
       my_resource: "{{deployment_id}}"
   - include_tasks: tasks/actions/filter.yml
+    vars:
+      my_action: "Destroy"
   # Remove Deployment
   - include_tasks: tasks/destroy/get_template.yml
     vars:
