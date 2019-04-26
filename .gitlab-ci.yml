@@ -1,5 +1,11 @@
+stages:
+  - build
+  - test
+  - deploy
+  - clean
+
 deployment:
-  stage: test
+  stage: build
   script:
     - ansible-playbook playbooks/deployment_create.yml --extra-vars="blueprint_name=Linux"
 
@@ -10,7 +16,7 @@ ping:
     - ansible-playbook playbooks/test_ping.yml --extra-vars="ip_address=$IP_ADDRESS"
 
 decomission:
-  stage: test
+  stage: clean
   script:
     - export DEPLOYMENT_ID=`cat /tmp/deployment_id`
-    - ansible-playbook playbooks/deployment_remove.yml --extra-vars="deployment_id=$DEPLOYMENT_ID"
+    - ansible-playbook playbooks/deployment_action.yml --extra-vars="deployment_id=$DEPLOYMENT_ID action_name=Destroy"
