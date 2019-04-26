@@ -32,3 +32,4 @@ Decomission:
   script:
     - export DEPLOYMENT_ID=`cat /tmp/deployment_id`
     - ansible-playbook playbooks/deployment_action.yml --extra-vars="deployment_id=$DEPLOYMENT_ID action_name=Destroy"
+  when: always
