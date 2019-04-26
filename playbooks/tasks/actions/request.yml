@@ -1,7 +1,7 @@
 ---
 - name: Run Day 2 Operation
   uri:
-    url: "https://{{ vra_host }}/catalog-service/api/consumer/resources/{{ my_resource }}/actions/{{ destroy_id }}/requests"
+    url: "https://{{ vra_host }}/catalog-service/api/consumer/resources/{{ my_resource }}/actions/{{ action_id }}/requests"
     method: POST
     follow_redirects: all
     headers:

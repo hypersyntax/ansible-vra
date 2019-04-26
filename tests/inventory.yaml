@@ -1,8 +1,5 @@
 
-[vms:vars]
+[all:vars]
 ansible_connection=ssh
 ansible_user=root
 ansible_ssh_pass=Password123!
-
-[vms]
-192.168.2.105

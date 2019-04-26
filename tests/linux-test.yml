@@ -1,5 +1,5 @@
 ---
-- hosts: vms
+- hosts: all
 
   tasks:
   - name: Install Apache Web Server
