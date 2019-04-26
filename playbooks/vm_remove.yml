@@ -17,13 +17,13 @@
   # Get Actions
   - include_tasks: tasks/actions/get.yml
     vars:
-      my_resource: "{{deployment_id}}"
+      my_resource: "{{resource_id}}"
   - include_tasks: tasks/actions/filter.yml
-  # Remove Deployment
+  # Remove VM
   - include_tasks: tasks/destroy/get_template.yml
     vars:
-      my_resource: "{{deployment_id}}"
+      my_resource: "{{resource_id}}"
   - include_tasks: tasks/destroy/destroy_vm.yml
     vars:
-      my_resource: "{{deployment_id}}"
+      my_resource: "{{resource_id}}"
   - include_tasks: tasks/destroy/status.yml

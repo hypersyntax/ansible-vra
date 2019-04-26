@@ -1,0 +1,12 @@
+---
+- copy: 
+  content: "{{ $resource_id }}"
+  dest: /tmp/resource_id
+
+- copy: 
+  content: "{{ $deployment_id }}"
+  dest: /tmp/deployment_id
+
+- copy: 
+  content: "{{ $ip_address }}"
+  dest: /tmp/ip_address

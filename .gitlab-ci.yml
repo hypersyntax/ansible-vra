@@ -1,9 +1,16 @@
-linuxBlueprint:
+deployment:
   stage: test
   script:
-    - ansible-playbook playbooks/blueprint_pipeline.yml --extra-vars="blueprint_name=Linux retries=35"
+    - ansible-playbook playbooks/deployment_create.yml --extra-vars="blueprint_name=Linux"
 
-windowsBlueprint:
+ping:
   stage: test
   script:
-    - ansible-playbook playbooks/blueprint_pipeline.yml --extra-vars="blueprint_name=Windows retries=35"
+    - export IP_ADDRESS=`cat /tmp/ip_address`
+    - ansible-playbook playbooks/test_ping.yml --extra-vars="ip_address=$IP_ADDRESS"
+
+decomission:
+  stage: test
+  script:
+    - export DEPLOYMENT_ID=`cat /tmp/deployment_id`
+    - ansible-playbook playbooks/deployment_remove.yml --extra-vars="deployment_id=$DEPLOYMENT_ID"
