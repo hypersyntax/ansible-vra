@@ -6,6 +6,10 @@
     yum:
       name: httpd
       state: present
+  - name: Add index
+    copy:
+      content: It works
+      dest: /var/www/html/index.html
   - name: Start service httpd, if not started
     service:
       name: httpd
