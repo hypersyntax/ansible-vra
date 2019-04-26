@@ -9,7 +9,7 @@
       Accept: "application/json"
       Authorization: "{{ authorization }}"
     validate_certs: no
-    body: "{{ blueprints.json }}"
+    body: "{{ blueprint_template }}"
     return_content: yes
     body_format: json
     timeout: 120

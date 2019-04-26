@@ -1,0 +1,21 @@
+---
+
+- set_fact:
+    blueprint_template: "{{ blueprints.json }}"
+
+- dict_modify:
+    parent: data
+    key: memory
+    value: 2048
+    json: "{{ blueprint_template }}"
+  register: blueprint_template
+
+- dict_modify:
+    parent: data
+    key: cpu
+    value: 2
+    json: "{{ blueprint_template }}"
+  register: blueprint_template
+
+- debug:
+    var: blueprint_template

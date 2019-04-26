@@ -19,6 +19,9 @@
   - include_tasks: tasks/blueprint/filter.yml
   - include_tasks: tasks/template/get.yml
 
+  # Modify Template Payload
+  - include_tasks: tasks/template/modify.yml
+
   # Submit Request
   - include_tasks: tasks/request/submit.yml
   - include_tasks: tasks/request/status.yml
