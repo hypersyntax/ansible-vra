@@ -19,7 +19,7 @@ Install Apache Web Server:
   stage: test
   script:
     - export IP_ADDRESS=`cat /tmp/ip_address`
-    - ansible-playbook -i inventory.yaml -i "$IP_ADDRESS," linux-test.yml
+    - ansible-playbook -i tests/inventory.yaml -i "$IP_ADDRESS," tests/linux-test.yml
 
 Web Server Accessible:
   stage: test
