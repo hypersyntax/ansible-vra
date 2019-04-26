@@ -22,3 +22,4 @@
 
 - set_fact:
     blueprint_template: "{{ my_template.json.json }}"
+  when: my_template.changed is True
