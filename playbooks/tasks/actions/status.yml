@@ -1,0 +1,23 @@
+---
+
+- name: Get action status
+  uri:
+    url: "{{ action_request.location }}"
+    method: GET
+    follow_redirects: all
+    headers:
+      Accept: "application/json"
+      Authorization: "{{ authorization }}"
+    validate_certs: no
+    timeout: 120
+    status_code: 200
+  register: status_result
+  until: status_result.json.stateName == "Successful" or status_result.json.stateName == "Failed"
+  retries: 25
+  delay: 30
+
+- debug:
+    var: status_result
+
+- debug:
+    msg: "The vRA request state is {{status_result.json.stateName}}"

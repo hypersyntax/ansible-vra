@@ -1,0 +1,22 @@
+---
+- name: Run Day 2 Operation
+  uri:
+    url: "https://{{ vra_host }}/catalog-service/api/consumer/resources/{{ my_resource }}/actions/{{ destroy_id }}/requests"
+    method: POST
+    follow_redirects: all
+    headers:
+      Accept: "application/json"
+      Content-Type: "application/json"
+      Authorization: "{{ authorization }}"
+    validate_certs: no
+    body: "{{ destroy.json }}"
+    body_format: json
+    timeout: 120
+    status_code: 201
+  register: action_request
+
+- debug:
+    var: action_request
+
+- set_fact:
+    destroy_location: "{{ action_request.location }}"

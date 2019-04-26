@@ -1,0 +1,16 @@
+---
+- name: Get action template
+  uri:
+    url: "https://{{ vra_host }}/catalog-service/api/consumer/resources/{{ my_resource }}/actions/{{ action_id }}/requests/template"
+    method: GET
+    follow_redirects: all
+    headers:
+      Accept: "application/json"
+      Authorization: "{{ authorization }}"
+    validate_certs: no
+    timeout: 120
+    status_code: 200
+  register: action
+
+- debug:
+    var: action.json

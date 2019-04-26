@@ -1,0 +1,4 @@
+---
+- file: path=/tmp/resource_id state=absent
+- file: path=/tmp/deployment_id state=absent
+- file: path=/tmp/ip_address state=absent
